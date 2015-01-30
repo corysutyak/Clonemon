@@ -6,11 +6,22 @@ var speed : float;
 private var increment : float;
 var isMoving : boolean;
 
+var walkCounter : int;
+var walkCounter2 : int;
+var isInCombat : boolean;
+
+var CameraMain : GameObject;
+var CombatCamera : GameObject;
+
 function Start () {
 
-startPoint = transform.position;
-endPoint = transform.position;
-speed = 5;
+	startPoint = transform.position;
+	endPoint = transform.position;
+	speed = 5;
+
+	walkCounter2 = Random.Range(5, 15);
+	isInCombat = false;
+
 }
 
 function Update () {
@@ -28,7 +39,9 @@ function Update () {
 		transform.position = Vector3.Lerp(startPoint,endPoint, increment);
 	}
 	
+	if(!isInCombat){
 	if(Input.GetKey("w") && isMoving == false){
+		calculateWalk();
 		increment = 0;
 		isMoving = true;
 		startPoint= transform.position;
@@ -36,6 +49,7 @@ function Update () {
 	}
 	
 		if(Input.GetKey("s") && isMoving == false){
+				calculateWalk();
 		increment = 0;
 		isMoving = true;
 		startPoint= transform.position;
@@ -43,6 +57,7 @@ function Update () {
 	}
 	
 		if(Input.GetKey("a") && isMoving == false){
+				calculateWalk();
 		increment = 0;
 		isMoving = true;
 		startPoint= transform.position;
@@ -50,9 +65,30 @@ function Update () {
 	}
 	
 		if(Input.GetKey("d") && isMoving == false){
+				calculateWalk();
 		increment = 0;
 		isMoving = true;
 		startPoint= transform.position;
 		endPoint= new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);
 	}
+	
+	}
 }
+
+	function calculateWalk(){
+		if(walkCounter >= walkCounter2){
+			walkCounter2 = Random.Range(5, 15);
+			walkCounter = 0;
+			enterCombat();
+		}
+		else{
+			walkCounter++;
+		}
+	}
+	
+	function enterCombat(){
+	//isInCombat = true;
+	CameraMain.active = false;
+	CombatCamera.active = true;
+		Debug.Log("You have entered COMBAT");
+	}
