@@ -26,21 +26,26 @@ function Start () {
 
 function Update () {
 
+	var Sprite = gameObject.GetComponent(AnimateSprite);
+	
 	if(increment <= 1 && isMoving == true){
 		increment += speed/100;
-		Debug.Log("Moving");
 	}
 	else{
 		isMoving = false;
-		Debug.Log("Stopped");
 	}
 	
 	if(isMoving){
 		transform.position = Vector3.Lerp(startPoint,endPoint, increment);
 	}
+	else{
+		Sprite.totalCells = 1;
+	}
 	
 	if(!isInCombat){
 	if(Input.GetKey("w") && isMoving == false){
+		Sprite.rowNumber = 3;
+		Sprite.totalCells = 4;
 		calculateWalk();
 		increment = 0;
 		isMoving = true;
@@ -49,6 +54,8 @@ function Update () {
 	}
 	
 		if(Input.GetKey("s") && isMoving == false){
+		Sprite.rowNumber = 0;
+		Sprite.totalCells = 4;
 				calculateWalk();
 		increment = 0;
 		isMoving = true;
@@ -57,6 +64,8 @@ function Update () {
 	}
 	
 		if(Input.GetKey("a") && isMoving == false){
+		Sprite.rowNumber = 1;
+		Sprite.totalCells = 4;
 				calculateWalk();
 		increment = 0;
 		isMoving = true;
@@ -65,6 +74,8 @@ function Update () {
 	}
 	
 		if(Input.GetKey("d") && isMoving == false){
+		Sprite.rowNumber = 2;
+		Sprite.totalCells = 4;
 				calculateWalk();
 		increment = 0;
 		isMoving = true;
@@ -76,13 +87,20 @@ function Update () {
 }
 
 	function calculateWalk(){
+		yield WaitForSeconds(.3);
+		
+		var hit: RaycastHit;
+			if(Physics.Raycast (transform.position, -Vector3.up, hit, 100.0)){
+				var distanceToGround = hit.distance;
+			}
+			if(hit.collider.gameObject.tag == "TallGrass"){
+				walkCounter++;
+			}
+	
 		if(walkCounter >= walkCounter2){
 			walkCounter2 = Random.Range(5, 15);
 			walkCounter = 0;
 			enterCombat();
-		}
-		else{
-			walkCounter++;
 		}
 	}
 	
