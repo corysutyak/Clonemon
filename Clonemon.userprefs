@@ -1,9 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\AnimateSprite.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerStats.js">
     <Files>
-      <File FileName="Assets\Scripts\AnimateSprite.js" Line="37" Column="1" />
-      <File FileName="Assets\Scripts\PlayerStats.js" Line="99" Column="2" />
+      <File FileName="Assets\Scripts\AnimateSprite.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerStats.js" Line="154" Column="35" />
+      <File FileName="Assets\Scripts\monster.js" Line="18" Column="8" />
+      <File FileName="Assets\Scripts\Main.js" Line="11" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -1,6 +1,7 @@
 ﻿#pragma strict
 
 class monster{
+	var name : String;
 	var type : Type;
 	var baseHP : float;
 	var curHP : float;
