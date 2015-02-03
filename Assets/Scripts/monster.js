@@ -10,6 +10,9 @@ class monster{
 	var baseDef : float;
 	var curDef : float;
 	var speed : float;
+	var regionLocated : String;
+	var rarity : Rarity;
+	var image : Texture2D;
 }
 
 enum Type {
@@ -20,4 +23,9 @@ enum Type {
 	ground,
 	steel,
 	electric
+}
+
+enum Rarity{
+	common,
+	rare
 }

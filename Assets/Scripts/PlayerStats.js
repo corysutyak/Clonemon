@@ -5,15 +5,21 @@ var endPoint : Vector3;
 var speed : float;
 private var increment : float;
 var isMoving : boolean;
+var disableMovement : boolean;
 
 var walkCounter : int;
 var walkCounter2 : int;
 var isInCombat : boolean;
+var directionFacing : String;
 
 var CameraMain : GameObject;
 var CombatCamera : GameObject;
 
 var teleportLoc : GameObject[];
+
+var region : String;
+
+var MainScript : Main;
 function Start () {
 
 	startPoint = transform.position;
@@ -21,11 +27,15 @@ function Start () {
 	
 	walkCounter2 = Random.Range(5, 15);
 	isInCombat = false;
+	region = "region1";
 
 }
 
 function Update () {
 
+	if(Input.GetKeyDown("space") && !disableMovement){
+		talkToNPC();
+	}
 	var Sprite = gameObject.GetComponent(AnimateSprite);
 	var xMove : int;
 	var yMove : int;	
@@ -47,7 +57,7 @@ function Update () {
 		Sprite.totalCells = 1;
 	}
 	
-	if(!isInCombat){
+	if(!isInCombat && !disableMovement){
 		if (Input.GetKey(KeyCode.LeftShift)){
 			speed = 10;
 		}
@@ -60,6 +70,7 @@ function Update () {
 		yMove = 1;
 		Sprite.rowNumber = 3;
 		Sprite.totalCells = 4;
+		directionFacing = "north";
 	}
 	
 		if(Input.GetKey("s") && isMoving == false){
@@ -67,6 +78,7 @@ function Update () {
 		yMove = -1;
 		Sprite.rowNumber = 0;
 		Sprite.totalCells = 4;
+		directionFacing = "south";
 	}
 	
 		if(Input.GetKey("a") && isMoving == false){
@@ -74,6 +86,7 @@ function Update () {
 		yMove = 0;
 		Sprite.rowNumber = 1;
 		Sprite.totalCells = 4;
+		directionFacing = "west";
 	}
 	
 		if(Input.GetKey("d") && isMoving == false){
@@ -81,7 +94,7 @@ function Update () {
 		yMove = 0;
 		Sprite.rowNumber = 2;
 		Sprite.totalCells = 4;
-
+		directionFacing = "east";
 	}
 	
 	if (xMove > 0){
@@ -134,6 +147,7 @@ function Update () {
 	}
 	
 	function enterCombat(){
+		MainScript.randomizeMonster();
 		isInCombat = true;
 		CameraMain.active = false;
 		CombatCamera.active = true;
@@ -146,11 +160,50 @@ function Update () {
 			Debug.Log("TeleportEntrance1");
 			this.transform.position = teleportLoc[1].transform.position;
 			this.transform.position.y += 2;
+			region = "region2";
 		}
 		if(col.gameObject.tag == "TeleportEntrance2")
 		{
 			Debug.Log("TeleportEntrance2");
 			this.transform.position = teleportLoc[0].transform.position;
-			this.transform.position.y += 2;
+			this.transform.position.y -= 2;
+			region = "region1";
+		}
+	}
+	
+	function talkToNPC(){
+		var hit : RaycastHit;
+		var distanceToGround;
+		if(directionFacing == "north"){
+			if (Physics.Raycast(transform.position, Vector3.up, hit, 1.0)){
+				distanceToGround = hit.distance;
+				if(hit.collider.gameObject.tag == "npc"){
+					hit.collider.SendMessage("talk");
+				}
+			}
+		}
+		if(directionFacing == "south"){
+			if (Physics.Raycast(transform.position, Vector3.down, hit, 1.0)){
+				distanceToGround = hit.distance;
+				if(hit.collider.gameObject.tag == "npc"){
+					hit.collider.SendMessage("talk");
+				}
+			}
+		}
+		if(directionFacing == "east"){
+			if (Physics.Raycast(transform.position, Vector3.right, hit, 1.0)){
+				distanceToGround = hit.distance;
+				if(hit.collider.gameObject.tag == "npc"){
+					hit.collider.SendMessage("talk");
+				}
+			}
+		}
+		if(directionFacing == "west"){
+			if (Physics.Raycast(transform.position, Vector3.left, hit, 1.0)){
+				distanceToGround = hit.distance;
+				if(hit.collider.gameObject.tag == "npc"){
+					hit.collider.SendMessage("talk");
+				}
+			}
 		}
 	}

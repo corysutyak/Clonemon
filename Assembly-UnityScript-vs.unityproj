@@ -48,6 +48,8 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\AnimateSprite.js" />
      <Compile Include="Assets\Scripts\Main.js" />
+     <Compile Include="Assets\Scripts\NPC.js" />
+     <Compile Include="Assets\Scripts\PauseMenu.js" />
      <Compile Include="Assets\Scripts\PlayerStats.js" />
      <Compile Include="Assets\Scripts\monster.js" />
  <Reference Include="UnityEngine.UI">
