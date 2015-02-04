@@ -47,10 +47,13 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\AnimateSprite.js" />
-     <Compile Include="Assets\Scripts\Main.js" />
+     <Compile Include="Assets\Scripts\Attack.js" />
+     <Compile Include="Assets\Scripts\Main1.js" />
+     <Compile Include="Assets\Scripts\MonsterAttacks.js" />
      <Compile Include="Assets\Scripts\NPC.js" />
      <Compile Include="Assets\Scripts\PauseMenu.js" />
      <Compile Include="Assets\Scripts\PlayerStats.js" />
+     <Compile Include="Assets\Scripts\SaveSystem.js" />
      <Compile Include="Assets\Scripts\monster.js" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Users/Cory/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>

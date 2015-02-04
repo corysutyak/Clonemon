@@ -4,6 +4,8 @@ var isPaused : boolean;
 var menu : int;
 
 function OnGUI () {
+	var other : SaveSystem;
+	other = gameObject.Find("Player").GetComponent(SaveSystem);
 	if(isPaused){
 		if (GUI.Button(Rect(10, 70, 100, 30), "INDEX")){
 			menu = 1;
@@ -18,13 +20,14 @@ function OnGUI () {
 			menu = 4;
 		}
 		if (GUI.Button(Rect(10, 190, 100, 30), "SAVE")){
+			other.Save();
 			menu = 5;
 		}
 		if (GUI.Button(Rect(10, 220, 100, 30), "OPTIONS")){
 			menu = 6;
 		}	
 		if (GUI.Button(Rect(10, 250, 100, 30), "EXIT")){
-			menu = 7;
+			Application.Quit();
 		}				
 		
 		switch(menu){

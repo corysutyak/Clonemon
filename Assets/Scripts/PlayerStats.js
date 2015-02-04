@@ -19,7 +19,7 @@ var teleportLoc : GameObject[];
 
 var region : String;
 
-var MainScript : Main;
+var MainScript : Main1;
 function Start () {
 
 	startPoint = transform.position;
@@ -147,11 +147,18 @@ function Update () {
 	}
 	
 	function enterCombat(){
+		Debug.Log("Entered Combat");
 		MainScript.randomizeMonster();
 		isInCombat = true;
 		CameraMain.active = false;
 		CombatCamera.active = true;
 		Debug.Log("You have entered COMBAT");
+	}
+	
+	function exitCombat(){
+		CameraMain.active = true;
+		CombatCamera.active = false;
+		isInCombat = false;
 	}
 
 	function OnTriggerEnter(col : Collider){
@@ -177,7 +184,7 @@ function Update () {
 		if(directionFacing == "north"){
 			if (Physics.Raycast(transform.position, Vector3.up, hit, 1.0)){
 				distanceToGround = hit.distance;
-				if(hit.collider.gameObject.tag == "npc"){
+				if(hit.collider.gameObject.name == "NPC"){
 					hit.collider.SendMessage("talk");
 				}
 			}
@@ -185,7 +192,7 @@ function Update () {
 		if(directionFacing == "south"){
 			if (Physics.Raycast(transform.position, Vector3.down, hit, 1.0)){
 				distanceToGround = hit.distance;
-				if(hit.collider.gameObject.tag == "npc"){
+				if(hit.collider.gameObject.name == "NPC"){
 					hit.collider.SendMessage("talk");
 				}
 			}
@@ -193,7 +200,7 @@ function Update () {
 		if(directionFacing == "east"){
 			if (Physics.Raycast(transform.position, Vector3.right, hit, 1.0)){
 				distanceToGround = hit.distance;
-				if(hit.collider.gameObject.tag == "npc"){
+				if(hit.collider.gameObject.name == "NPC"){
 					hit.collider.SendMessage("talk");
 				}
 			}
@@ -201,7 +208,7 @@ function Update () {
 		if(directionFacing == "west"){
 			if (Physics.Raycast(transform.position, Vector3.left, hit, 1.0)){
 				distanceToGround = hit.distance;
-				if(hit.collider.gameObject.tag == "npc"){
+				if(hit.collider.gameObject.name == "NPC"){
 					hit.collider.SendMessage("talk");
 				}
 			}
