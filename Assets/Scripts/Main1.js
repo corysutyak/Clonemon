@@ -37,7 +37,7 @@ function OnGUI(){
 		
 		for(var i = 0; i < 4; i++){
 			if(turn == 0){
-				if(GUI.Button(Rect(150, 100 + (i * 50), 100, 30), "" + monsterEquipped.attacks[i].name)){
+				if(GUI.Button(Rect(100 + (i* 100), 500, 100, 30), "" + monsterEquipped.attacks[i].name)){
 					monsterAttacks.useAbility("" + monsterEquipped.attacks[i].name, turn, monsterEquipped.attacks[i].type);
 					playerAttacked();
 				}
@@ -106,7 +106,20 @@ function randomizeMonster(){
 	}
 	
 	var newRandom = Random.Range(0, tempMonsters.Count);
-	enemyMonster = tempMonsters[newRandom ];
+	enemyMonster = new monster();
+	enemyMonster.name = tempMonsters[newRandom].name;
+	enemyMonster.baseHP = tempMonsters[newRandom].baseHP;
+	enemyMonster.curHP = tempMonsters[newRandom].curHP;
+	enemyMonster.baseAtk = tempMonsters[newRandom].baseAtk;	
+	enemyMonster.curAtk = tempMonsters[newRandom].curAtk;
+	enemyMonster.baseDef = tempMonsters[newRandom].baseDef;
+	enemyMonster.curDef = tempMonsters[newRandom].curDef;
+	enemyMonster.speed = tempMonsters[newRandom].speed;
+	enemyMonster.regionLocated = tempMonsters[newRandom].regionLocated;
+	enemyMonster.rarity = tempMonsters[newRandom].rarity;
+	enemyMonster.image = tempMonsters[newRandom].image;
+	enemyMonster.attacks = tempMonsters[newRandom].attacks;
+	enemyMonster.maxHP = tempMonsters[newRandom].maxHP;	
 }
 
 function copyMonster(){

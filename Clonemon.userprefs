@@ -1,14 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MonsterAttacks.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Main1.js">
     <Files>
-      <File FileName="Assets\Scripts\NPC.js" Line="15" Column="2" />
-      <File FileName="Assets\Scripts\PlayerStats.js" Line="22" Column="23" />
+      <File FileName="Assets\Scripts\PlayerStats.js" Line="178" Column="23" />
+      <File FileName="Assets\Scripts\NPC.js" Line="1" Column="1" />
       <File FileName="Assets\Scripts\AnimateSprite.js" Line="1" Column="1" />
       <File FileName="Assets\Scripts\monster.js" Line="18" Column="21" />
-      <File FileName="Assets\Scripts\Main1.js" Line="80" Column="120" />
+      <File FileName="Assets\Scripts\Main1.js" Line="40" Column="43" />
       <File FileName="Assets\Scripts\PauseMenu.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Attack.js" Line="6" Column="18" />
+      <File FileName="Assets\Scripts\Attack.js" Line="1" Column="1" />
       <File FileName="Assets\Scripts\SaveSystem.js" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MonsterAttacks.js" Line="45" Column="4" />
     </Files>

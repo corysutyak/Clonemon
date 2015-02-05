@@ -65,29 +65,29 @@ function Update () {
 			speed = 5;
 		}
 
-	if(Input.GetKey("w") && isMoving == false){
-		xMove = 0;
-		yMove = 1;
-		Sprite.rowNumber = 3;
-		Sprite.totalCells = 4;
-		directionFacing = "north";
-	}
+		if(Input.GetKey("w") && isMoving == false){
+			xMove = 0;
+			yMove = 1;
+			Sprite.rowNumber = 3;
+			Sprite.totalCells = 4;
+			directionFacing = "north";
+		}
 	
 		if(Input.GetKey("s") && isMoving == false){
-		xMove = 0;
-		yMove = -1;
-		Sprite.rowNumber = 0;
-		Sprite.totalCells = 4;
-		directionFacing = "south";
-	}
+			xMove = 0;
+			yMove = -1;
+			Sprite.rowNumber = 0;
+			Sprite.totalCells = 4;
+			directionFacing = "south";
+		}
 	
 		if(Input.GetKey("a") && isMoving == false){
-		xMove = -1;
-		yMove = 0;
-		Sprite.rowNumber = 1;
-		Sprite.totalCells = 4;
-		directionFacing = "west";
-	}
+			xMove = -1;
+			yMove = 0;
+			Sprite.rowNumber = 1;
+			Sprite.totalCells = 4;
+			directionFacing = "west";
+		}
 	
 		if(Input.GetKey("d") && isMoving == false){
 		xMove = 1;
@@ -95,36 +95,37 @@ function Update () {
 		Sprite.rowNumber = 2;
 		Sprite.totalCells = 4;
 		directionFacing = "east";
-	}
+		}
 	
-	if (xMove > 0){
-		direction = transform.TransformDirection (-Vector3.left);
-	}
-	else if (xMove < 0) {
-		direction = transform.TransformDirection (Vector3.left);
-	}
-	else if (yMove > 0) {
-		direction = transform.TransformDirection (Vector3.up);
-	}
-	else if (yMove < 0) {
-		direction = transform.TransformDirection (-Vector3.up);
-	}	
+		if (xMove > 0){
+			direction = transform.TransformDirection (-Vector3.left);
+		}
+		else if (xMove < 0) {
+			direction = transform.TransformDirection (Vector3.left);
+		}
+		else if (yMove > 0) {
+			direction = transform.TransformDirection (Vector3.up);
+		}
+		else if (yMove < 0) {
+			direction = transform.TransformDirection (-Vector3.up);
+		}	
 		
-	if (direction != null){
-		if(Physics.Raycast (transform.position, direction, hit2, speed)){
-			var distanceToGround = hit2.distance;
-			if(hit2.collider.gameObject.tag == "Collision"){
-				disableMove = true;
+		if (direction != null){
+			if(Physics.Raycast (transform.position, direction, hit2, speed)){
+				var distanceToGround = hit2.distance;
+				if(hit2.collider.gameObject.tag == "Collision"){
+					disableMove = true;
+				}
 			}
-		}
-		if(!disableMove){
-			increment = 0;
-			isMoving = true;
-			startPoint= transform.position;
-			endPoint= new Vector3(transform.position.x + xMove, transform.position.y + yMove, transform.position.z);
-			calculateWalk();
-		}
-		disableMove = false;	
+		
+			if(!disableMove){
+				increment = 0;
+				isMoving = true;
+				startPoint= transform.position;
+				endPoint= new Vector3(transform.position.x + xMove, transform.position.y + yMove, transform.position.z);
+				calculateWalk();
+			}
+			disableMove = false;	
 		}
 	}
 }
