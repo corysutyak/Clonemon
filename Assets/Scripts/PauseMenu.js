@@ -6,6 +6,8 @@ var menu : int;
 function OnGUI () {
 	var other : SaveSystem;
 	other = gameObject.Find("Player").GetComponent(SaveSystem);
+	var index : Main1;
+	index = gameObject.Find("Main").GetComponent(Main1);
 	if(isPaused){
 		if (GUI.Button(Rect(10, 70, 100, 30), "INDEX")){
 			menu = 1;
@@ -33,6 +35,9 @@ function OnGUI () {
 		switch(menu){
 			case 1:
 				GUI.Box(Rect(110, 70, 200, 300), "INDEX");
+				for (var i = 0; i < index.AllMonsters.Length; i++){
+					GUI.Button(Rect(110, 90 + (i * 50), 200, 50),  (i+1) + " " + index.AllMonsters[i].name);
+				}
 				break;
 			case 2:
 				GUI.Box(Rect(110, 70, 200, 300), "MONSTERS");
