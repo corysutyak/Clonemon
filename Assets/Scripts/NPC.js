@@ -6,15 +6,16 @@ var displayText : String;
 
 var showText;
 
+var next : boolean = false;
 
 function OnGUI () {
 	if(showText){
-		GUI.Label (Rect(Screen.width/2,Screen.height/2 ,500, 20), "" + displayText);
+		GUI.TextArea (Rect(0, Screen.height * .8 ,Screen.width, Screen.height * .2), "" + displayText);
 	}
-	
 }
 
 function Update () {
+
 }
 
 function talk(){
